@@ -9,6 +9,7 @@ import User from "../models/User.js";
 // 5. Call next()
 // 6. If invalid → return 401
 
+
 const authMiddleware = async (req, res, next) => {
   //  implement here
 };
