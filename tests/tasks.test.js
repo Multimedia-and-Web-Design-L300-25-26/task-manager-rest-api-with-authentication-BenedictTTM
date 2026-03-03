@@ -1,10 +1,13 @@
 import request from "supertest";
 import app from "../src/app.js";
+import { connectDB, disconnectDB } from "./setup.js";
 
 let token;
 let taskId;
 
 beforeAll(async () => {
+  await connectDB();
+
   // Register
   await request(app)
     .post("/api/auth/register")
@@ -23,6 +26,10 @@ beforeAll(async () => {
     });
 
   token = res.body.token;
+});
+
+afterAll(async () => {
+  await disconnectDB();
 });
 
 describe("Task Routes", () => {
