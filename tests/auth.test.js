@@ -1,5 +1,14 @@
 import request from "supertest";
 import app from "../src/app.js";
+import { connectDB, disconnectDB } from "./setup.js";
+
+beforeAll(async () => {
+  await connectDB();
+});
+
+afterAll(async () => {
+  await disconnectDB();
+});
 
 describe("Auth Routes", () => {
 
